@@ -1,13 +1,13 @@
-var gulp = require('gulp');
-var less = require('gulp-less');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-var sourcemaps = require('gulp-sourcemaps');
-var cache = require('gulp-memory-cache');
+let gulp = require('gulp');
+let less = require('gulp-less');
+let concat = require('gulp-concat');
+let uglify = require('gulp-uglify');
+let sourcemaps = require('gulp-sourcemaps');
+let cache = require('gulp-memory-cache');
 let cleanCSS = require('gulp-clean-css');
 
 
-var paths = {
+let paths = {
   styles: {
     src: './src/less/**/*.less',
     dest: 'dist/assets/css/',
