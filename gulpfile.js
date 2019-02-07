@@ -1,21 +1,24 @@
-let gulp = require('gulp');
-let less = require('gulp-less');
-let concat = require('gulp-concat');
-let uglify = require('gulp-uglify');
-let sourcemaps = require('gulp-sourcemaps');
-let cache = require('gulp-memory-cache');
+var gulp = require('gulp');
+var less = require('gulp-less');
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
+var sourcemaps = require('gulp-sourcemaps');
+var cache = require('gulp-memory-cache');
 let cleanCSS = require('gulp-clean-css');
+var babel = require('gulp-babel');
+var es2015 = require('@babel/preset-env');
 
 
-let paths = {
+
+var paths = {
   styles: {
     src: './src/less/**/*.less',
-    dest: 'dist/assets/css/',
+    dest: 'dist/',
     name: 'style.css'
   },
   scripts: {
     src: './src/js/**/*.js',
-    dest: 'dist/assets/js/',
+    dest: 'dist/',
     name: 'main.js'
   }
 };
@@ -28,7 +31,7 @@ function styles() {
     .pipe(less())
     .pipe(concat(paths.styles.name))
     .pipe(cleanCSS())
-    .pipe(sourcemaps.write('../maps'))
+    .pipe(sourcemaps.write('maps'))
     .pipe(gulp.dest(paths.styles.dest));
 }
 
@@ -38,8 +41,9 @@ function scripts() {
     .pipe(sourcemaps.init())
     .pipe(cache('js'))
     .pipe(concat(paths.scripts.name))
-    .pipe(uglify())
-    .pipe(sourcemaps.write('../maps'))
+    .pipe(babel({ presets: [es2015] }))
+    //.pipe(uglify())
+    .pipe(sourcemaps.write('maps'))
     .pipe(gulp.dest(paths.scripts.dest));
 }
 
@@ -49,5 +53,5 @@ function watch() {
 }
 
 gulp.task('less', styles);
-gulp.task('script', scripts);
+gulp.task('scripts', scripts);
 gulp.task('watch', watch);
