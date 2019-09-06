@@ -1,12 +1,13 @@
 {
-  "name": "news-editor",
+  "name": "Gulp starter",
   "version": "1.0.0",
-  "description": "A news editor for Verallia",
-  "main": "index.js",
+  "description": "",
+  "main": "",
   "scripts": {
-    "less": "gulp less",
-    "scripts": "gulp scripts",
-    "watch": "gulp watch"
+    "less": "gulp buildStyles",
+    "scripts": "gulp buildScripts",
+    "dev": "gulp watch",
+    "build": "gulp build"
   },
   "repository": {
     "type": "git",
@@ -15,9 +16,10 @@
   "author": "Vincent Maret",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.3.1",
-    "@babel/register": "^7.0.0",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.5.5",
+    "core-js": "^3.2.1",
     "gulp": "^4.0.0",
     "gulp-babel": "^8.0.0",
     "gulp-cache": "^1.1.1",
@@ -27,9 +29,7 @@
     "gulp-load-plugins": "^1.5.0",
     "gulp-memory-cache": "^0.3.0",
     "gulp-sourcemaps": "^2.6.4",
-    "gulp-uglify": "^3.0.1"
-  },
-  "dependencies": {
-    "express": "^4.16.4"
+    "gulp-uglify": "^3.0.1",
+    "merge-stream": "^2.0.0"
   }
 }
